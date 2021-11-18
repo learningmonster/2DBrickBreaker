@@ -14,7 +14,7 @@
         var ballSpeedY = 7;
 
         const PADDLE_WIDTH = 100;
-        const PADDLE_THICKNESS = 10;
+        const PADDLE_THICKNESS = 15;
         const PADDLE_DIST_FROM_BOTTOM_EDGE = 60;
         // var paddleX = canvas.width/2;
         var paddleX = 400;
@@ -87,6 +87,11 @@
             ballX < paddleRightEdgeX //ball to the left of right paddle edge
           ) {
             ballSpeedY *= -1;
+
+            var centerOfPaddleX = paddleX + PADDLE_WIDTH/2;
+            var ballDistFromPaddleCenterX = ballX - centerOfPaddleX;
+
+            ballSpeedX = ballDistFromPaddleCenterX * 0.35;
           }
           // console.log("ballX: " + ballX + "; ballY: " + ballY);
         }
